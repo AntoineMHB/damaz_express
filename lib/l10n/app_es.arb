@@ -1,0 +1,13 @@
+
+
+{
+  "register_title": "Crea una cuenta para ti",
+  "passwords_do_not_match": "Las contraseñas no coinciden",
+  "already_have_account": "¿Ya tienes una cuenta?",
+  "login_now": "Inicia sesión ahora",
+  "darkMode": "Modo Oscuro",
+  "settings": "Configuración",
+  "language": "Idioma",
+  "switchToSpanish": "Cambiar a Español",
+  "switchToEnglish": "Cambiar a Inglés"
+}
