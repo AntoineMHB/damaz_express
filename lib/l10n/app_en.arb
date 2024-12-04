@@ -1,6 +1,9 @@
 
 
 {
+
+  "homes": "H O M E",
+  "logout": "L O G O U T",
   "register_title": "Let's create an account for you",
   "passwords_do_not_match": "Passwords don't match",
   "already_have_account": "Already have an account?",

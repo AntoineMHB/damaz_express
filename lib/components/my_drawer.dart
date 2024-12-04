@@ -4,6 +4,7 @@ import 'package:damaz/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
@@ -42,6 +43,8 @@ class _MyDrawerState extends State<MyDrawer> {
     // Get screen width for responsiveness
     final screenWidth = MediaQuery.of(context).size.width;
     final isSmallScreen = screenWidth < 600;
+
+    final localizations = AppLocalizations.of(context);
 
     return Drawer(
       backgroundColor: Theme.of(context).colorScheme.surface,
@@ -82,14 +85,14 @@ class _MyDrawerState extends State<MyDrawer> {
 
           // Home list tile
           MyDrawerTile(
-            text: "H O M E",
+            text: localizations!.homes,
             icon: Icons.home,
             onTap: () => Navigator.pop(context),
           ),
 
           // Settings list title
           MyDrawerTile(
-            text: "S E T T I N G S",
+            text: localizations.settings,
             icon: Icons.settings,
             onTap: () {
               Navigator.pop(context);
@@ -106,7 +109,7 @@ class _MyDrawerState extends State<MyDrawer> {
 
           // Logout list title
           MyDrawerTile(
-            text: "L O G O U T",
+            text: localizations.logout,
             icon: Icons.logout,
             onTap: () {
               Navigator.pop(context);
