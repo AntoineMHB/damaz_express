@@ -36,23 +36,27 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     _checkConnectivityAndBattery();
   }
 
-  void _checkConnectivityAndBattery() async {
+  void _checkConnectivityAndBattery() {
     final connectivityService = Provider.of<ConnectivityService>(context, listen: false);
     final batteryService = Provider.of<BatteryService>(context, listen: false);
 
-    setState(() {
-      _isConnected = connectivityService.isConnected;
+    // Subscribe to connectivity changes
+    connectivityService.connectivityStream.listen((isConnected) {
+      setState(() {
+        _isConnected = isConnected;
+      });
     });
 
-    try {
-      final batteryLevel = await batteryService.getBatteryLevel();
+    // Check initial battery status
+    batteryService.getBatteryLevel().then((batteryLevel) {
       setState(() {
         _batteryLevel = batteryLevel;
       });
-    } catch (e) {
+    }).catchError((e) {
       print('Error getting battery level: $e');
-    }
+    });
   }
+
 
   @override
   void dispose() {
