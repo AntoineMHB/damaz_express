@@ -3,6 +3,8 @@ import 'package:damaz/models/food.dart';
 import 'package:damaz/models/restaurant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:damaz/services/languageProvider.dart';
 
 class FoodPage extends StatefulWidget {
   final Food food;
@@ -39,6 +41,7 @@ class _FoodPageState extends State<FoodPage> {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final isLargeScreen = screenWidth > 600;
+    final languageProvider = Provider.of<LanguageProvider>(context);
 
     return Stack(
       children: [
@@ -103,7 +106,7 @@ class _FoodPageState extends State<FoodPage> {
 
                       // Add-ons Header
                       Text(
-                        "Add-ons",
+                        AppLocalizations.of(context)!.addonHeader,
                         style: TextStyle(
                           fontSize: isLargeScreen ? 18 : 16,
                           fontWeight: FontWeight.bold,
@@ -156,7 +159,7 @@ class _FoodPageState extends State<FoodPage> {
                     horizontal: isLargeScreen ? 40.0 : 25.0,
                   ),
                   child: MyButton(
-                    text: "Add to cart",
+                    text: AppLocalizations.of(context)!.addToCart,
                     onTap: () => addToCart(widget.food, widget.selectedAddons),
                   ),
                 ),

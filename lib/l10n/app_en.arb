@@ -12,5 +12,15 @@
   "settings": "Settings",
   "language": "Language",
   "switchToSpanish": "Switch to Spanish",
-  "switchToEnglish": "Switch to English"
+  "switchToEnglish": "Switch to English",
+  "addonHeader": "Add-on",
+  "addToCart": "Add to cart",
+  "welcomeDevicesPage": "Welcome Home, ",
+  "smartDevicesText": "Smart Devices",
+  "smartLightText": "Smart Light",
+  "motionDetectionText": "Motion Detection",
+  "locationTrackingText": "Location Tracking",
+  "smartFunText": "Smart Fun",
+  "homeTextGButton": "Home",
+  "sensorsTextGButton": "Sensors"
 }

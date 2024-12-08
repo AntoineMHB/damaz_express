@@ -7,7 +7,7 @@ import 'package:damaz/utils/smart_device_box.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../themes/color_schemes.dart';
 
 class DevicesPage extends StatefulWidget {
@@ -24,14 +24,8 @@ class _DevicesPageState extends State<DevicesPage> {
   final double horizontalPadding = 40;
   final double verticalPadding = 25;
 
-  // list of smart devices
-  List mySmartDevices = [
-    // [ smartDeviceName, iconPath, powerStatus, statusText ]
-    ["Smart Light", "lib/images/light-bulb.png", true, SmartLightPage()],
-    ["Motion Detection", "lib/images/motionIcon.png", false, MotionDetectionPage()],
-    ["Location Tracking", "lib/images/gpsIcon.png", false, LocationTrackingPage()],
-    ["Smart Fan", "lib/images/air-conditioner.png", false, SmartLightPage()],
-  ];
+  late List mySmartDevices;
+
 
   // power button switched
   void powerSwitchChanged(bool value, int index) {
@@ -73,6 +67,15 @@ class _DevicesPageState extends State<DevicesPage> {
   }
   @override
   Widget build(BuildContext context) {
+    // list of smart devices
+     mySmartDevices = [
+      // [ smartDeviceName, iconPath, powerStatus, statusText ]
+      [AppLocalizations.of(context)!.smartDevicesText, "lib/images/light-bulb.png", true, SmartLightPage()],
+      [AppLocalizations.of(context)!.motionDetectionText, "lib/images/motionIcon.png", false, MotionDetectionPage()],
+      [AppLocalizations.of(context)!.locationTrackingText, "lib/images/gpsIcon.png", false, LocationTrackingPage()],
+      [AppLocalizations.of(context)!.smartFunText, "lib/images/air-conditioner.png", false, SmartLightPage()],
+    ];
+
     ResponsiveUtil().init(context);
     final brightness = Theme.of(context).brightness;
     final isLightMode = brightness == Brightness.light;
@@ -125,7 +128,7 @@ class _DevicesPageState extends State<DevicesPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Welcome Home,",
+                        AppLocalizations.of(context)!.welcomeDevicesPage,
                         style: TextStyle(fontSize: 20, color: Colors.grey[700]),
                       ),
                       Text(
@@ -154,7 +157,7 @@ class _DevicesPageState extends State<DevicesPage> {
                   Padding(
                       padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
                       child: Text(
-                        "Smart Devices",
+                        AppLocalizations.of(context)!.smartDevicesText,
                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                         selectionColor: Colors.grey[800],
                       ),

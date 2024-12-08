@@ -12,5 +12,15 @@
   "settings": "Configuración",
   "language": "Idioma",
   "switchToSpanish": "Cambiar a Español",
-  "switchToEnglish": "Cambiar a Inglés"
+  "switchToEnglish": "Cambiar a Inglés",
+  "addonHeader": "Añadir",
+  "addToCart": "Añadir a la cesta",
+  "welcomeDevicesPage": "Bienvenido a Casa,",
+  "smartDevicesText": "Dispositivos Inteligentes",
+  "smartLightText": "Luz Inteligente",
+  "motionDetectionText": "Detección de Movimiento",
+  "locationTrackingText": "Seguimiento de Ubicación",
+  "smartFunText": "Diversión Inteligente",
+  "homeTextGButton": "Hogar",
+  "sensorsTextGButton": "Sensores"
 }

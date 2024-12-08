@@ -7,6 +7,7 @@ import 'package:damaz/utils/responsive_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class MainScreen extends StatelessWidget {
@@ -59,11 +60,11 @@ class MainScreen extends StatelessWidget {
             tabs: [
               GButton(
                   icon: Icons.home,
-                  text: 'Home',
+                  text: AppLocalizations.of(context)!.homeTextGButton,
                   textStyle: FontManager.bodyStyle.copyWith(color: textColor)),
               GButton(
                   icon: Icons.sensors_rounded,
-                  text: 'Sensors',
+                  text: AppLocalizations.of(context)!.sensorsTextGButton,
                   textStyle: FontManager.bodyStyle.copyWith(color: textColor)),
               // GButton(
               //     icon: Icons.settings,
