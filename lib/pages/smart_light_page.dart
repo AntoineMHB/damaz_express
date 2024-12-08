@@ -5,6 +5,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 // Light data model
 class LightData {
@@ -147,7 +148,7 @@ class _SmartLightPageState extends State<SmartLightPage> {
     if (!_notificationPermissionGranted) {
       return Scaffold(
         appBar: AppBar(
-          title: Text('Smart Light'),
+          title: Text(AppLocalizations.of(context)!.smartLightText),
         ),
         body: Center(
           child: Column(

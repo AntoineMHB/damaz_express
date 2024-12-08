@@ -314,6 +314,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:geofence_service/geofence_service.dart';
 import 'package:geolocator/geolocator.dart' as geo;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LocationTrackingPage extends StatefulWidget {
   const LocationTrackingPage({super.key});
@@ -433,7 +434,7 @@ class _LocationTrackingPageState extends State<LocationTrackingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Location Tracking'),
+        title: Text(AppLocalizations.of(context)!.locationTrackingText),
       ),
       body: _initialCameraPosition == null
           ? Center(child: CircularProgressIndicator())
