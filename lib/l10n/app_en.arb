@@ -22,5 +22,6 @@
   "locationTrackingText": "Location Tracking",
   "smartFunText": "Smart Fun",
   "homeTextGButton": "Home",
-  "sensorsTextGButton": "Sensors"
+  "sensorsTextGButton": "Sensors",
+  "locationPermissionsDesabledText": "Location permissions are disabled"
 }

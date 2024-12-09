@@ -370,7 +370,7 @@ class _LocationTrackingPageState extends State<LocationTrackingPage> {
       serviceEnabled = await geo.Geolocator.isLocationServiceEnabled();
       if (!serviceEnabled) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Location services are disabled.")),
+          SnackBar(content: Text(AppLocalizations.of(context)!.locationPermissionsDesabledText)),
         );
         return;
       }
