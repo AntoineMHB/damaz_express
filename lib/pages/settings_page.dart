@@ -39,17 +39,32 @@ class SettingsPage extends StatelessWidget {
             _buildSettingsOption(
               context,
               title: AppLocalizations.of(context)!.language,
-              trailing: ElevatedButton(
-                onPressed: () {
-                  // Switch between English and Spanish
-                  String newLanguageCode =
-                  languageProvider.locale.languageCode == 'en' ? 'es' : 'en';
-                  languageProvider.changeLanguage(newLanguageCode);
-                },
-                child: Text(
-                  languageProvider.locale.languageCode == 'en'
-                      ? AppLocalizations.of(context)!.switchToSpanish
-                      : AppLocalizations.of(context)!.switchToEnglish,
+              trailing: SingleChildScrollView(
+                child: DropdownButton<String>(
+                  value: languageProvider.locale.languageCode,
+                  onChanged: (String? newLanguageCode) {
+                    if (newLanguageCode != null) {
+                      languageProvider.changeLanguage(newLanguageCode);
+                    }
+                  },
+                  items: const [
+                    DropdownMenuItem(
+                      value: 'en',
+                      child: Text('English'),
+                    ),
+                    DropdownMenuItem(
+                      value: 'fr',
+                      child: Text('Français'),
+                    ),
+                    DropdownMenuItem(
+                      value: 'es',
+                      child: Text('Español'),
+                    ),
+                    // DropdownMenuItem(
+                    //   value: 'rw',
+                    //   child: Text('Kinya'),
+                    // ),
+                  ],
                 ),
               ),
             ),

@@ -36,6 +36,9 @@ class _RegisterPageState extends State<RegisterPage> {
       // try creating the user
       try {
         await _authService.signUpWithEmailPassword(emailController.text, passwordController.text);
+
+        // Navigate to Home Page after successful login
+        Navigator.pushReplacementNamed(context, '/loginPage');
       }
 
       // display any errors
@@ -163,7 +166,7 @@ class _RegisterPageState extends State<RegisterPage> {
               const FacebookAuthentication(),
               const GithubAuthentication(),
 
-              SizedBox(width: 15),
+              SizedBox(width: 25),
           
               // already have an account? Login here
               Row(

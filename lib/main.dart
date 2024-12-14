@@ -1,3 +1,6 @@
+import 'package:damaz/pages/home_page.dart';
+import 'package:damaz/pages/login_page.dart';
+import 'package:damaz/pages/main_screen.dart';
 import 'package:damaz/services/languageProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -61,6 +64,10 @@ class _MyAppState extends State<MyApp> {
     final languageProvider = Provider.of<LanguageProvider>(context);
 
     return MaterialApp(
+      routes:{
+        '/mainScreen': (context) =>  MainScreen(),
+        '/loginPage': (context) => const LoginPage(),
+      },
       debugShowCheckedModeBanner: false,
       home: const AuthGate(),
       theme: Provider.of<ThemeProvider>(context).themeData,
@@ -74,6 +81,8 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: const [
         Locale('en', ''),
         Locale('es', ''),
+        Locale('fr', ''),
+        Locale('rw', ''),
       ],
     );
   }

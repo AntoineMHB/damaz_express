@@ -42,6 +42,9 @@ class _LoginPageState extends State<LoginPage> {
 
       // Pop the loading circle
       Navigator.pop(context);
+
+      // Navigate to Home Page after successful login
+      Navigator.pushReplacementNamed(context, '/mainScreen');
     } catch (e) {
       // Pop the loading circle
       Navigator.pop(context);

@@ -70,7 +70,7 @@ class _DevicesPageState extends State<DevicesPage> {
     // list of smart devices
      mySmartDevices = [
       // [ smartDeviceName, iconPath, powerStatus, statusText ]
-      [AppLocalizations.of(context)!.smartDevicesText, "lib/images/light-bulb.png", true, SmartLightPage()],
+      [AppLocalizations.of(context)!.smartLightText, "lib/images/light-bulb.png", true, SmartLightPage()],
       [AppLocalizations.of(context)!.motionDetectionText, "lib/images/motionIcon.png", false, MotionDetectionPage()],
       [AppLocalizations.of(context)!.locationTrackingText, "lib/images/gpsIcon.png", false, LocationTrackingPage()],
       [AppLocalizations.of(context)!.smartFunText, "lib/images/air-conditioner.png", false, SmartLightPage()],
