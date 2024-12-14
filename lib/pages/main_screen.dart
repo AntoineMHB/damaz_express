@@ -1,6 +1,8 @@
 import 'package:damaz/controllers/navigation_controller.dart';
 import 'package:damaz/pages/devices_page.dart';
+import 'package:damaz/pages/expense_page.dart';
 import 'package:damaz/pages/home_page.dart';
+import 'package:damaz/pages/smart_devices_page.dart';
 import 'package:damaz/themes/color_schemes.dart';
 import 'package:damaz/utils/font_manager.dart';
 import 'package:damaz/utils/responsive_util.dart';
@@ -34,12 +36,16 @@ class MainScreen extends StatelessWidget {
             index: controller.currentIndex.value,
             children: [
               // home page of the food app
-              HomePage(),
+              //HomePage(),
+              ExpensePage(),
 
           
               // the home page of the sensors app
+              SmartDevicesPage(),
 
-              DevicesPage(),
+
+
+              //DevicesPage(),
               // Settings(),
             ],
           )),

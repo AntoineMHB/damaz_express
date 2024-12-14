@@ -36,6 +36,7 @@ dependencies:
   status_alert: ^1.0.1
   flutter_localizations:
     sdk: flutter
+  carousel_slider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
