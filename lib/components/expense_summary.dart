@@ -90,16 +90,68 @@ class ExpenseSummary extends StatelessWidget {
             children: [
               // week total
               Padding(
-                padding: const EdgeInsets.all(25.0),
-                child: Row(
-                  children: [
-                    Text(
-                        'Week Total:',
-                     style: TextStyle(fontWeight: FontWeight.bold),),
-                    Text('\$${calculateWeekTotal(value, sunday, monday, tuesday, wednesday, thursday, friday, saturday)}')
-                  ],
-                ),
+                  padding: const EdgeInsets.all(16.0),
+                  child: Card(
+                    color: Colors.orange.shade100,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    elevation: 4.0,
+                    child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+
+                            // Card tile
+                            Text(
+                              'Week Summary',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18.0,
+                                color: Colors.orange.shade800,
+                              ),
+                            ),
+                            const SizedBox(height: 8.0),
+
+                            // card content
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Week Total:",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16.0,
+                                  ),
+                                ),
+
+                                  Text('\$${calculateWeekTotal(value, sunday, monday, tuesday, wednesday, thursday, friday, saturday)}',
+                                    style: TextStyle(
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.orange.shade900,
+                                    ),),
+
+                              ],
+                            )
+                          ],
+                        ),
+                    ),
+
+                  ),
               ),
+              // Padding(
+              //   padding: const EdgeInsets.all(25.0),
+              //   child: Row(
+              //     children: [
+              //       Text(
+              //           'Week Total:',
+              //        style: TextStyle(fontWeight: FontWeight.bold),),
+              //       Text('\$${calculateWeekTotal(value, sunday, monday, tuesday, wednesday, thursday, friday, saturday)}')
+              //     ],
+              //   ),
+              // ),
 
               // bar graph
               SizedBox(

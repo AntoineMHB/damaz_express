@@ -3,7 +3,9 @@ import 'package:damaz/components/my_drawer.dart';
 import 'package:damaz/data/expense_data.dart';
 import 'package:damaz/models/expense_item.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../components/expense_tile.dart';
 import '../services/languageProvider.dart';
@@ -147,6 +149,24 @@ class _ExpensePageState extends State<ExpensePage> {
             child: Icon(Icons.add),
           ),
           body: ListView(children: [
+            // welcoming message
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                AppLocalizations.of(context)!.welcomeDevicesPage,
+                style: TextStyle(fontSize: 20, color: Colors.grey[700]),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "ALPHIE",
+                style: GoogleFonts.bebasNeue(
+                  fontSize: 25,
+                ),
+              ),
+            ),
+
             // weekly summary
             ExpenseSummary(startOfWeek: value.startOfWeekDate()),
 
