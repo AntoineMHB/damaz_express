@@ -1,8 +1,9 @@
+import 'package:damaz/data/hive_dabatase.dart';
 import 'package:damaz/datetime/date_time_helper.dart';
 import 'package:flutter/material.dart';
 import '../models/expense_item.dart';
 
-class ExpenseData {
+class ExpenseData extends ChangeNotifier {
 
   // list of all expenses
   List<ExpenseItem> overallExpenseList = [];
@@ -12,14 +13,30 @@ class ExpenseData {
     return overallExpenseList;
   }
 
+  // prepare data to display
+  final db = HiverDataBase();
+  void prepareData() {
+    // if there exixt data, get it
+    if (db.readData().isNotEmpty) {
+      overallExpenseList = db.readData();
+
+    }
+  }
+
   // add new expense
 void addNewExpense(ExpenseItem newExpense) {
     overallExpenseList.add(newExpense);
+
+    notifyListeners();
+    db.saveData(overallExpenseList);
 }
 
   // delete expense
   void deleteExpense(ExpenseItem expense) {
     overallExpenseList.remove(expense);
+
+    notifyListeners();
+    db.saveData(overallExpenseList);
   }
 
   // get weekday (mon, tues, etc) from a dataTime object

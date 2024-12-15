@@ -163,8 +163,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
 
 
-              const FacebookAuthentication(),
-              const GithubAuthentication(),
+              // const FacebookAuthentication(),
+              // const GithubAuthentication(),
 
               SizedBox(width: 25),
           

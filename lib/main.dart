@@ -1,3 +1,4 @@
+import 'package:damaz/data/expense_data.dart';
 import 'package:damaz/pages/home_page.dart';
 import 'package:damaz/pages/login_page.dart';
 import 'package:damaz/pages/main_screen.dart';
@@ -5,6 +6,7 @@ import 'package:damaz/services/languageProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'firebase_options.dart';
@@ -15,6 +17,14 @@ import 'services/battery_service.dart';
 import 'themes/theme_provider.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // intialize hive
+  await Hive.initFlutter();
+
+  // open a hive box
+  await Hive.openBox("expense_database");
+
   WidgetsFlutterBinding.ensureInitialized();
 
   try {
@@ -29,6 +39,7 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (context) => ExpenseData()),
         ChangeNotifierProvider(create: (context) => ThemeProvider()),
         ChangeNotifierProvider(create: (context) => Restaurant()),
         ChangeNotifierProvider(create: (context) => LanguageProvider()), // Add LanguageProvider

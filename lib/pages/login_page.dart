@@ -193,7 +193,7 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     SquareTile(
                       onTap: () => AuthService().signInWithGoogle(),
-                      imagePath: 'https://www.googleusercontent.com/google-logo.png',
+                      imagePath: 'lib/images/google_logo.png',
                     ),
                     SizedBox(width: screenWidth * 0.05),
                     SquareTile(imagePath: 'lib/images/apple_logo.png'),
@@ -201,8 +201,8 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 //SizedBox(height: screenHeight * 0.05),
 
-                const FacebookAuthentication(),
-                const GithubAuthentication(),
+                // const FacebookAuthentication(),
+                // const GithubAuthentication(),
 
                 SizedBox(height: screenHeight * 0.03),
 

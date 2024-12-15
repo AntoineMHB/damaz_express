@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:damaz/components/my_drawer.dart';
 import 'package:damaz/pages/location_tracking_page.dart';
 import 'package:damaz/pages/motion_detection_page.dart';
 import 'package:damaz/pages/smart_light_page.dart';
@@ -75,7 +76,7 @@ class _DevicesPageState extends State<SmartDevicesPage> {
       [AppLocalizations.of(context)!.smartDevicesText, "lib/images/light-bulb.png", true, SmartLightPage()],
       [AppLocalizations.of(context)!.motionDetectionText, "lib/images/motionIcon.png", false, MotionDetectionPage()],
       [AppLocalizations.of(context)!.locationTrackingText, "lib/images/gpsIcon.png", false, LocationTrackingPage()],
-      [AppLocalizations.of(context)!.smartFunText, "lib/images/air-conditioner.png", false, SmartLightPage()],
+      //[AppLocalizations.of(context)!.smartFunText, "lib/images/air-conditioner.png", false, SmartLightPage()],
     ];
 
     ResponsiveUtil().init(context);
@@ -90,6 +91,10 @@ class _DevicesPageState extends State<SmartDevicesPage> {
     final textColor =
     isLightMode ? ColorSchemes.textLight : ColorSchemes.textDark;
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Smart Home"),
+      ),
+      drawer: MyDrawer(),
       backgroundColor: Colors.grey[300],
       body: SafeArea(
           child: SafeArea(
@@ -97,30 +102,30 @@ class _DevicesPageState extends State<SmartDevicesPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // custom app bar
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: horizontalPadding,
-                      vertical: verticalPadding,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // menu icon
-                        Image.asset(
-                          'lib/images/menu.png',
-                          height: 45,
-                          color: Colors.grey[800],
-                        ),
-
-                        // account icon
-                        Icon(
-                          Icons.person,
-                          size: 45,
-                          color: Colors.grey[800],
-                        )
-                      ],
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: EdgeInsets.symmetric(
+                  //     horizontal: horizontalPadding,
+                  //     vertical: verticalPadding,
+                  //   ),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: [
+                  //       // menu icon
+                  //       Image.asset(
+                  //         'lib/images/menu.png',
+                  //         height: 45,
+                  //         color: Colors.grey[800],
+                  //       ),
+                  //
+                  //       // account icon
+                  //       Icon(
+                  //         Icons.person,
+                  //         size: 45,
+                  //         color: Colors.grey[800],
+                  //       )
+                  //     ],
+                  //   ),
+                  // ),
 
                   const SizedBox(height: 20),
 
