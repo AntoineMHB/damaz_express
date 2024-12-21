@@ -3,8 +3,11 @@ import 'package:damaz/components/income_card.dart';
 import 'package:damaz/components/spending_card.dart';
 import 'package:damaz/data/expense_data.dart';
 import 'package:damaz/datetime/date_time_helper.dart';
+import 'package:damaz/services/balance_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'balance_card.dart';
 
 class ExpenseCard extends StatelessWidget {
 
@@ -46,8 +49,11 @@ class ExpenseCard extends StatelessWidget {
     return max == 0 ? 100 : max;
   }
 
+  // calculate balance
+
+
   // calculate the week total
-  String calculateWeekTotal(
+  double calculateWeekTotal(
       ExpenseData value,
       String sunday,
       String monday,
@@ -71,13 +77,15 @@ class ExpenseCard extends StatelessWidget {
     for (int i = 0; i < values.length; i++) {
       total += values[i];
     }
-    return total.toStringAsFixed(2);
+    return total;
 
   }
 
 
   @override
   Widget build(BuildContext context) {
+    final totalIncome = Provider.of<BalanceProvider>(context).totalIncome;
+
     // get yyyymmdd for each day of this week
     String sunday = convertDateTimeToString(startOfWeek.add(const Duration(days: 0)));
     String monday = convertDateTimeToString(startOfWeek.add(const Duration(days: 1)));
@@ -119,12 +127,17 @@ class ExpenseCard extends StatelessWidget {
                         Column(
 
                           children: [
-                            Text('\$${calculateWeekTotal(value, sunday, monday, tuesday, wednesday, thursday, friday, saturday)}',
-                              style: TextStyle(
-                                fontSize: 25.0,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),),
+                            Consumer<BalanceProvider>(
+                              builder:(context, balanceProvider, child) {
+
+                              return Text('\$${balanceProvider.totalIncome - calculateWeekTotal(value, sunday, monday, tuesday, wednesday, thursday, friday, saturday)}',
+                                style: TextStyle(
+                                  fontSize: 25.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),);
+                                 }
+                            ),
 
                             const SizedBox(height: 5.0),
 
@@ -180,6 +193,10 @@ class ExpenseCard extends StatelessWidget {
 
               SizedBox(height: 8.0,),
 
+              // BalanceCard(),
+
+
+
               // Payment text
               Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -188,7 +205,7 @@ class ExpenseCard extends StatelessWidget {
                     Text(
                         "Payments",
                     style: TextStyle(
-                      color: Colors.white,
+                      //color: Colors.white,
                       fontSize: 15,
                       fontWeight: FontWeight.bold
                     ),),

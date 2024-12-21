@@ -2,6 +2,7 @@ import 'package:damaz/data/expense_data.dart';
 import 'package:damaz/pages/home_page.dart';
 import 'package:damaz/pages/login_page.dart';
 import 'package:damaz/pages/main_screen.dart';
+import 'package:damaz/services/balance_provider.dart';
 import 'package:damaz/services/languageProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'data/income_data.dart';
 import 'firebase_options.dart';
 import 'models/restaurant.dart';
 import 'services/auth_gate.dart';
@@ -39,6 +41,8 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (context) => BalanceProvider()),
+        ChangeNotifierProvider(create: (context) => IncomeData()),
         ChangeNotifierProvider(create: (context) => ExpenseData()),
         ChangeNotifierProvider(create: (context) => ThemeProvider()),
         ChangeNotifierProvider(create: (context) => Restaurant()),

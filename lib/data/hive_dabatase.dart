@@ -1,6 +1,8 @@
 import 'package:damaz/models/expense_item.dart';
 import 'package:hive_flutter/adapters.dart';
 
+import '../models/income_item.dart';
+
 class HiverDataBase {
   // reference our box
   final _myBox = Hive.box("expense_database");
@@ -57,5 +59,40 @@ class HiverDataBase {
      allExpenses.add(expense);
    }
    return allExpenses;
+ }
+
+ // Save incomes
+ void saveIncomes(List<IncomeItem> allIncomes){
+    List<List<dynamic>> allIncomesFormatted = [];
+
+    for (var income in allIncomes) {
+      List<dynamic> incomeFormatted = [
+        income.name,
+        income.amount,
+        income.dateTime,
+      ];
+      allIncomesFormatted.add(incomeFormatted);
+    }
+
+    _myBox.put("ALL_INCOMES", allIncomesFormatted);
+ }
+
+ // Read incomes
+ List<IncomeItem> readIncomes(){
+    List savedIncomes = _myBox.get("ALL_INCOMES") ?? [];
+    List<IncomeItem> allIncomes = [];
+
+    for (var savedIncome in savedIncomes) {
+      String name = savedIncome[0];
+      String amount = savedIncome[1];
+      DateTime dateTime  = savedIncome[2];
+
+      allIncomes.add(IncomeItem(
+          name: name,
+          amount: amount,
+          dateTime: dateTime,
+      ));
+    }
+    return allIncomes;
  }
 }
