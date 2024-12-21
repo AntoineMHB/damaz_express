@@ -90,56 +90,56 @@ class ExpenseSummary extends StatelessWidget {
             children: [
               // week total
               Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Card(
-                    color: Colors.orange.shade100,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                    elevation: 4.0,
-                    child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-
-                            // Card tile
-                            Text(
-                              'Week Summary',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0,
-                                color: Colors.orange.shade800,
-                              ),
-                            ),
-                            const SizedBox(height: 8.0),
-
-                            // card content
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Week Total:",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16.0,
-                                  ),
-                                ),
-
-                                  Text('\$${calculateWeekTotal(value, sunday, monday, tuesday, wednesday, thursday, friday, saturday)}',
-                                    style: TextStyle(
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.orange.shade900,
-                                    ),),
-
-                              ],
-                            )
-                          ],
-                        ),
-                    ),
-
+                padding: const EdgeInsets.all(16.0),
+                child: Card(
+                  color: Colors.orange.shade100,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0),
                   ),
+                  elevation: 4.0,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+
+                        // Card tile
+                        Text(
+                          'Your spending behaviour in this week',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18.0,
+                            color: Colors.orange.shade800,
+                          ),
+                        ),
+                        const SizedBox(height: 8.0),
+
+                        // card content
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //   children: [
+                        //     Text(
+                        //       "Week Total:",
+                        //       style: TextStyle(
+                        //         fontWeight: FontWeight.bold,
+                        //         fontSize: 16.0,
+                        //       ),
+                        //     ),
+                        //
+                        //     Text('\$${calculateWeekTotal(value, sunday, monday, tuesday, wednesday, thursday, friday, saturday)}',
+                        //       style: TextStyle(
+                        //         fontSize: 16.0,
+                        //         fontWeight: FontWeight.bold,
+                        //         color: Colors.orange.shade900,
+                        //       ),),
+                        //
+                        //   ],
+                        // )
+                      ],
+                    ),
+                  ),
+
+                ),
               ),
               // Padding(
               //   padding: const EdgeInsets.all(25.0),
@@ -155,17 +155,17 @@ class ExpenseSummary extends StatelessWidget {
 
               // bar graph
               SizedBox(
-                      height: 200,
-                      child: MyBarGraph(
-                maxY: calculateMax(value, sunday, monday, tuesday, wednesday, thursday, friday, saturday),
-                sunAmount: value.calculateDailyExpenseSummary()[sunday] ?? 0,
-                monAmount: value.calculateDailyExpenseSummary()[monday] ?? 0,
-                tueAmount: value.calculateDailyExpenseSummary()[tuesday] ?? 0,
-                wedAmount: value.calculateDailyExpenseSummary()[wednesday] ?? 0,
-                thurAmount: value.calculateDailyExpenseSummary()[thursday] ?? 0,
-                friAmount:value.calculateDailyExpenseSummary()[friday] ?? 0,
-                satAmount: value.calculateDailyExpenseSummary()[saturday] ?? 0,),
-                    ),
+                height: 200,
+                child: MyBarGraph(
+                  maxY: calculateMax(value, sunday, monday, tuesday, wednesday, thursday, friday, saturday),
+                  sunAmount: value.calculateDailyExpenseSummary()[sunday] ?? 0,
+                  monAmount: value.calculateDailyExpenseSummary()[monday] ?? 0,
+                  tueAmount: value.calculateDailyExpenseSummary()[tuesday] ?? 0,
+                  wedAmount: value.calculateDailyExpenseSummary()[wednesday] ?? 0,
+                  thurAmount: value.calculateDailyExpenseSummary()[thursday] ?? 0,
+                  friAmount:value.calculateDailyExpenseSummary()[friday] ?? 0,
+                  satAmount: value.calculateDailyExpenseSummary()[saturday] ?? 0,),
+              ),
             ],
           ),
     );

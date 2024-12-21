@@ -3,6 +3,7 @@ import 'package:damaz/pages/devices_page.dart';
 import 'package:damaz/pages/expense_page.dart';
 import 'package:damaz/pages/home_page.dart';
 import 'package:damaz/pages/smart_devices_page.dart';
+import 'package:damaz/pages/summary_page.dart';
 import 'package:damaz/themes/color_schemes.dart';
 import 'package:damaz/utils/font_manager.dart';
 import 'package:damaz/utils/responsive_util.dart';
@@ -43,6 +44,9 @@ class MainScreen extends StatelessWidget {
               // the home page of the sensors app
               SmartDevicesPage(),
 
+              // summary page
+              SummaryPage(),
+
 
 
               //DevicesPage(),
@@ -72,10 +76,10 @@ class MainScreen extends StatelessWidget {
                   icon: Icons.sensors_rounded,
                   text: AppLocalizations.of(context)!.sensorsTextGButton,
                   textStyle: FontManager.bodyStyle.copyWith(color: textColor)),
-              // GButton(
-              //     icon: Icons.settings,
-              //     text: 'Settings',
-              //     textStyle: FontManager.bodyStyle.copyWith(color: textColor)),
+              GButton(
+                  icon: Icons.calendar_view_week,
+                  text: 'Weekly Summary',
+                  textStyle: FontManager.bodyStyle.copyWith(color: textColor)),
             ],
             selectedIndex: controller.currentIndex.value,
             onTabChange: (index) {

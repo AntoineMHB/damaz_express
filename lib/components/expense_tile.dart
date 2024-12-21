@@ -8,9 +8,9 @@ class ExpenseTile extends StatelessWidget {
 
   ExpenseTile({
     super.key,
-  required this.name,
-  required this.amount,
-  required this.dateTime,
+    required this.name,
+    required this.amount,
+    required this.dateTime,
     required this.deleteTapped,
   });
 

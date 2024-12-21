@@ -1,3 +1,4 @@
+import 'package:damaz/components/expense_card.dart';
 import 'package:damaz/components/expense_summary.dart';
 import 'package:damaz/components/my_drawer.dart';
 import 'package:damaz/data/expense_data.dart';
@@ -36,22 +37,22 @@ class _ExpensePageState extends State<ExpensePage> {
   // add new expense
   void addNewExpense() {
     showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text("Add new expense"),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              // expense name
-              TextField(
-                controller: newExpenseNameController,
-                decoration: const InputDecoration(
-                  hintText: "Expense name",
-                ),
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text("Add new expense"),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // expense name
+            TextField(
+              controller: newExpenseNameController,
+              decoration: const InputDecoration(
+                hintText: "Expense name",
               ),
+            ),
 
-              Row(
-                children: [
+            Row(
+              children: [
                 // dollars
                 Expanded(
                   child: TextField(
@@ -74,22 +75,22 @@ class _ExpensePageState extends State<ExpensePage> {
                   ),
                 ),
               ],)
-            ],
-          ),
-          actions: [
-            // save button
-            MaterialButton(
-                onPressed: save,
-                child: Text("Save"),
-            ),
-
-            // cancel button
-            MaterialButton(
-              onPressed: cancel,
-              child: Text("Cancel"),
-            ),
           ],
         ),
+        actions: [
+          // save button
+          MaterialButton(
+            onPressed: save,
+            child: Text("Save"),
+          ),
+
+          // cancel button
+          MaterialButton(
+            onPressed: cancel,
+            child: Text("Cancel"),
+          ),
+        ],
+      ),
     );
   }
 
@@ -105,9 +106,9 @@ class _ExpensePageState extends State<ExpensePage> {
 
     // create expense item
     ExpenseItem newExpense = ExpenseItem(
-        name: newExpenseNameController.text,
-        amount: amount,
-        dateTime: DateTime.now(),
+      name: newExpenseNameController.text,
+      amount: amount,
+      dateTime: DateTime.now(),
     );
     // add the new expense
     Provider.of<ExpenseData>(context, listen: false).addNewExpense(newExpense);
@@ -130,14 +131,14 @@ class _ExpensePageState extends State<ExpensePage> {
     newExpenseCentsController.clear();
 
   }
-  
+
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     final languageProvider = Provider.of<LanguageProvider>(context);
 
     return Consumer<ExpenseData>(
-        builder: (context, value, child) => Scaffold(
+      builder: (context, value, child) => Scaffold(
           appBar: AppBar(
             title: Text("Unifin Bunny: Expense Tracker"),
           ),
@@ -168,11 +169,26 @@ class _ExpensePageState extends State<ExpensePage> {
             ),
 
             // weekly summary
-            ExpenseSummary(startOfWeek: value.startOfWeekDate()),
+            ExpenseCard(startOfWeek: value.startOfWeekDate(),),
 
             const SizedBox(height: 20,),
 
             // expense list
+
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                children: [
+                  Text(
+                    "All your expenses",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold
+                    ),),
+                ],
+              ),
+            ),
             ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
@@ -182,11 +198,11 @@ class _ExpensePageState extends State<ExpensePage> {
                   amount: value.getAllExpenseList()[index].amount,
                   dateTime: value.getAllExpenseList()[index].dateTime,
                   deleteTapped: (p0) =>
-                    deleteExpense(value.getAllExpenseList()[index]),
+                      deleteExpense(value.getAllExpenseList()[index]),
                 )
             ),
           ],)
-        ),
+      ),
     );
   }
 }
